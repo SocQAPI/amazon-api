@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "platform": "amazon",
+  "platformName": "Amazon",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "amazon/best-sellers",
+      "name": "Amazon Best Sellers API",
+      "description": "Collect products from public Amazon Best Sellers URLs with normalized titles, seller details, prices, ratings, review counts, sold counts, media, source links, and timestamps.",
+      "method": "POST",
+      "path": "/v1/amazon/best-sellers",
+      "payload": "payloads/best-sellers.json",
+      "launchedAt": "2026-08-14",
+      "price": "0.15 credits ($0.00075) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.15,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/amazon/best-sellers",
+      "landingUrl": "https://socq.ai/apis/amazon/best-sellers",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "amazon/product-detail",
+      "name": "Amazon Product Details API",
+      "description": "Collect public Amazon product details from known product URLs, returning normalized identity, description, seller, price, rating, review-count, sold-count, and media fields.",
+      "method": "POST",
+      "path": "/v1/amazon/product-detail",
+      "payload": "payloads/product-detail.json",
+      "launchedAt": "2026-08-14",
+      "price": "0.15 credits ($0.00075) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.15,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/amazon/product-detail",
+      "landingUrl": "https://socq.ai/apis/amazon/product-detail",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "amazon/product-search",
+      "name": "Amazon Product Search API",
+      "description": "Search a supported Amazon storefront by product phrase and return normalized public product, seller, price, rating, review, sold-count, media, and source fields when available.",
+      "method": "POST",
+      "path": "/v1/amazon/product-search",
+      "payload": "payloads/product-search.json",
+      "launchedAt": "2026-08-14",
+      "price": "0.15 credits ($0.00075) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.15,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/amazon/product-search",
+      "landingUrl": "https://socq.ai/apis/amazon/product-search",
+      "required": [
+        "domain",
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "domain": {
+            "type": "string",
+            "minLength": 1
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "domain",
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "amazon/reviews",
+      "name": "Amazon Reviews API",
+      "description": "Collect public Amazon product reviews from supported URLs, returning text, ratings, author details, product references, timestamps, and media as normalized records.",
+      "method": "POST",
+      "path": "/v1/amazon/reviews",
+      "payload": "payloads/reviews.json",
+      "launchedAt": "2026-08-14",
+      "price": "0.15 credits ($0.00075) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.15,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/amazon/reviews",
+      "landingUrl": "https://socq.ai/apis/amazon/reviews",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "amazon/seller-info",
+      "name": "Amazon Seller Info API",
+      "description": "Collect public seller-profile details from supported Amazon marketplaces, returning normalized seller identity, description, website, rating, feedback, location, source, and collection-time fields when available.",
+      "method": "POST",
+      "path": "/v1/amazon/seller-info",
+      "payload": "payloads/seller-info.json",
+      "launchedAt": "2026-08-14",
+      "price": "0.15 credits ($0.00075) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.15,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/amazon/seller-info",
+      "landingUrl": "https://socq.ai/apis/amazon/seller-info",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "amazon/shop",
+      "name": "Amazon Storefront API",
+      "description": "Read an Amazon creator storefront: profile, linked socials, idea lists with item counts, curated posts and trending picks with prices.",
+      "method": "POST",
+      "path": "/v1/amazon/shop",
+      "payload": "payloads/shop.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per call",
+      "billing": {
+        "baseCredits": 0.5,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/amazon/shop",
+      "landingUrl": "https://socq.ai/apis/amazon/shop",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Amazon storefront URL, such as https://www.amazon.com/shop/sydneydelrey."
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "description": "Provide the storefront URL of an Amazon creator in url. The result is one row with the storefront profile, its idea lists, curations and trending picks."
+      }
+    }
+  ]
+}

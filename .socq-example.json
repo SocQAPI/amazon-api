@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "2.0.0",
+  "kind": "platform",
+  "platform": "amazon",
+  "endpointCount": 6,
+  "endpoints": [
+    "amazon/best-sellers",
+    "amazon/product-detail",
+    "amazon/product-search",
+    "amazon/reviews",
+    "amazon/seller-info",
+    "amazon/shop"
+  ],
+  "landingPage": "https://socq.ai/apis/amazon",
+  "docsPage": "https://docs.socq.ai/api-manual/amazon/overview",
+  "generatedFrom": "SocQAPI/socq-example-template"
+}
